@@ -1,7 +1,7 @@
 from googleapiclient.discovery import build
 
-search_engine_id = '015037131198447628591:7g7ithuxakq'
-apis = ['AIzaSyBTg-ed_rVXHl4khSn8EXB3wC-F6-IP6tM','AIzaSyBy8oibtBr1kJu4UEL6uVOXkh-IHS9AHzs','AIzaSyAFjKNFRy13MnMvYUYA36kzTfPdGTrPEEk']
+search_engine_id = app.config['GOOGLE_KEYS']['search_engine_id']
+apis = app.config['GOOGLE_KEYS']['apis']
 
 
 def google_search(key_term, api, search_engine_id):
