@@ -1,4 +1,5 @@
 from googleapiclient.discovery import build
+from app import app
 
 search_engine_id = app.config['GOOGLE_KEYS']['search_engine_id']
 apis = app.config['GOOGLE_KEYS']['apis']

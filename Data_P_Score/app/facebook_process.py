@@ -1,5 +1,6 @@
 import requests, json
 from google_process import grab_facebook_alias,try_keys,google_search
+from app import app
 
 APP_ID = app.config['GOOGLE_KEYS']['APP_ID']
 VERSION = app.config['GOOGLE_KEYS']['VERSION']
