@@ -1,0 +1,203 @@
+{
+  "id": "197618263697397",
+  "name": "Mayfield Restaurant",
+  "can_checkin": true,
+  "category": "Restaurant\/Cafe",
+  "category_list": [{
+    "id": "149803325077018",
+    "name": "American Restaurant"
+  }],
+  "checkins": 5223,
+  "context": {
+    "friends_who_like": {
+      "data": [],
+      "summary": {
+        "social_sentence": "1 of your friends like this.",
+        "total_count": 1
+      }
+    },
+    "id": "b3Blbl9ncmFwaF9jb250ZAXh0OjE5NzYxODI2MzY5NzM5NwZDZD"
+  },
+  "about": "Mayfield is seasonal American restaurant in Brooklyn. \nOur kitchen closes daily from 3 p.m. - 5:30 p.m. to prep for dinner service.\n",
+  "attire": "Casual",
+  "fan_count": 1486,
+  "food_styles": ["American (New)"],
+  "hours": {
+    "mon_1_open": "17:00",
+    "mon_1_close": "23:00",
+    "tue_1_open": "11:00",
+    "tue_1_close": "23:00",
+    "wed_1_open": "11:00",
+    "wed_1_close": "23:00",
+    "thu_1_open": "11:00",
+    "thu_1_close": "23:00",
+    "fri_1_open": "11:00",
+    "fri_1_close": "00:00",
+    "sat_1_open": "11:00",
+    "sat_1_close": "00:00",
+    "sun_1_open": "11:00",
+    "sun_1_close": "23:00"
+  },
+  "is_always_open": false,
+  "is_community_page": false,
+  "is_permanently_closed": false,
+  "is_published": true,
+  "is_unclaimed": false,
+  "is_verified": false,
+  "link": "https:\/\/www.facebook.com\/MayfieldRestaurant\/",
+  "location": {
+    "city": "Brooklyn",
+    "country": "United States",
+    "latitude": 40.674946,
+    "longitude": -73.956734,
+    "state": "NY",
+    "street": "688 Franklin Ave",
+    "zip": "11238"
+  },
+  "parking": {
+    "lot": 0,
+    "street": 0,
+    "valet": 0
+  },
+  "payment_options": {
+    "amex": 1,
+    "cash_only": 0,
+    "discover": 1,
+    "mastercard": 1,
+    "visa": 1
+  },
+  "phone": "(347) 318-3643",
+  "place_type": "PLACE",
+  "price_range": "$$ (10-30)",
+  "restaurant_services": {
+    "delivery": 0,
+    "catering": 0,
+    "groups": 0,
+    "kids": 0,
+    "outdoor": 1,
+    "reserve": 0,
+    "takeout": 0,
+    "waiter": 1,
+    "walkins": 1
+  },
+  "restaurant_specialties": {
+    "breakfast": 0,
+    "coffee": 0,
+    "dinner": 1,
+    "drinks": 1,
+    "lunch": 0
+  },
+  "single_line_address": "688 Franklin Ave, Brooklyn, New York 11238",
+  "talking_about_count": 16,
+  "website": "http:\/\/mayfieldbk.com",
+  "were_here_count": 5223,
+  "posts": {
+    "data": [{
+      "message": "Today, Saturday August 13th from 1pm - 3pm meet on The Crown Inn Patio to celebrate and remember Brian Huff. For a $25 donation you can be a part of our celebration featuring food and booze from The Crown Inn, Rosco's, Chilo's and us (Mayfield Restaurant). And guess what? All the proceeds go to charity!",
+      "created_time": "2016-08-13T09:41:00+0000",
+      "id": "197618263697397_967057243420158"
+    }, {
+      "message": "\"auto\/PHOBIA\" is a new contemporary dance piece by Carlos A. Cruz Velazquez. It will premiere at the 2016 New York International Fringe Festival this week.\n\nTickets and more info \nhttps:\/\/www.show-score.com\/shows\/auto-phobia-fringenyc\n\nOnly 5 shows!!!!\nSaturday August 13th \u0040 7pm\nMonday August 15th \u0040 7:15pm\nSaturday August 20th \u0040 2pm\nMonday August 22nd \u0040 9:30pm\nWednesday August 24th \u0040 2:30pm\n\nPerformed by Christina Noel Reaves, Jennifer Jones, Jessica Galucci, and Carlos A. Cruz Velazquez . \nMusic by Giovanni Escalera \nLighting design by Natalie Robin",
+      "story": "Mayfield Restaurant shared colectivodoszeta \/ carlos a. cruz vel\u00e1zquez's photo.",
+      "created_time": "2016-08-12T23:59:47+0000",
+      "id": "197618263697397_966839410108608"
+    }, {
+      "message": "Saturday, August 13th from 1 - 3pm join us at \u0040the_crown_inn_bk as we remember and celebrate the life of Brian Huff. Your $25 donation gets you food and drinks from \u0040mayfieldrestaurant, \u0040roscospizza , \u0040chilosbk, and \u0040the_crown_inn_bk. Also, all of the profits go directly to charity. See you there.",
+      "created_time": "2016-08-09T18:38:17+0000",
+      "id": "197618263697397_964399247019291"
+    }, {
+      "message": "This is our roasted leg of Lamb with Tzatziki sauce, Israeli couscous, heirloom tomatoes, and fresh mint.",
+      "created_time": "2016-07-26T21:56:55+0000",
+      "id": "197618263697397_954029568056259"
+    }, {
+      "message": "One for the vegetarians! Charred eggplant puree, tabouli salad, labne, and cumin yogurt.",
+      "created_time": "2016-07-25T21:45:04+0000",
+      "id": "197618263697397_954028374723045"
+    }, {
+      "message": "We will be closed tomorrow, July 4th. We hope you have the day off as well. Get out there and be free!",
+      "created_time": "2016-07-03T19:33:07+0000",
+      "id": "197618263697397_940139472778602"
+    }, {
+      "message": "We liked this guy so much we named a restaurant after him! It's Curtis Mayfield's 74th birthday! Have a great night in his honor tonight.#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #curtismayfield",
+      "created_time": "2016-06-04T01:17:53+0000",
+      "id": "197618263697397_922307761228440"
+    }, {
+      "message": "Have you had our Smoked Berkshire Pork Ribs yet? We send this baby overboard with cider honey bbq sauce, pickled cabbage, fried pickles, and peanuts!\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-05-23T13:37:07+0000",
+      "id": "197618263697397_915585501900666"
+    }, {
+      "message": "Great news: We made \u0040Airbnb\u2019s New York Guidebook! Explore all that Brooklyn has to offer. https:\/\/www.airbnb.com\/things-to-do\/new-york",
+      "created_time": "2016-05-07T23:07:21+0000",
+      "id": "197618263697397_906133176179232"
+    }, {
+      "message": "Savor the flavors. Ricotta gnocchi with Ramps, Jambon de Bayonne, and a sprinkle of ricotta salata.\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-04-29T22:00:15+0000",
+      "id": "197618263697397_901227890003094"
+    }, {
+      "message": "It is with great pleasure and gratitude that we announce the record shattering $18,723 raised by The Mayfield\/Chilo's team for the MS Walk 2016! 100\u0025 of the donations went directly to the MS Society.\nSo many thanks to all who donated, walked and volunteered their time that made the event such an amazing success. We'd especially like to thank Mi Barrio Tortilleria, Paisanos Provisions, The Lobster Place, Dairyland, D'Artagnan, Bell's Brewery, Manhattan Distributors, Michael Skurnick, Greenhook, Ginsmiths and  Sixpoint Brewery for their donations to the event.\nYour generosity is very much appreciated. \nCan't wait to see you all again next year!\nLove,\nThe Mayfield\/Chilo's Team",
+      "story": "Mayfield Restaurant added 2 new photos.",
+      "created_time": "2016-04-26T23:43:35+0000",
+      "id": "197618263697397_899352010190682"
+    }, {
+      "message": "Also! THANK YOU to everyone who donated to the MS Society we have once again surpassed our goal of raising $10,000! But don't let that stop you, there is still 3 days left! Donate a minimum of $40 and you can come to this wonderful party! To donate, please visit http:\/\/mswalk.mayfieldbk.com\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #mswalk2016",
+      "created_time": "2016-04-14T23:15:44+0000",
+      "id": "197618263697397_892174160908467"
+    }, {
+      "message": "Hey, here's a shot of the latest cocktail line up. We have \"For the Children\", \"I'm A Lady\", \"Perfect Day\", and two new cocktails, \"New Beginnings\", and \"Smoke and Mirrors\". #mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-04-14T23:15:22+0000",
+      "id": "197618263697397_892174044241812"
+    }, {
+      "message": "Thank you to our wonderful purveyors for their donations to the MS Society.\n\nPaisanos Provisions\nMi Barrio Tortilleria\nThe Lobster Place\nDairyland\nManhattan Beer\nUnion Beer\nGreenhook Ginsmiths\nSkurnik Wines \nRedhead Hot Sauce\n\nBelow is a link to our donation center and details of the event. Follow the link to donate and\/or sign up of the walk. There is no requirement to do the walk to attend the party. We are asking for a $40 minimum donation for the party that can be made through the same link. Please email us directly if you are planning on attending.\nPlease share it with friends, family, and anyone who you know might be interested in donating and\/or participating in the festivities. There will also be an opportunity to donate at the event.\n\nThank you again for your continued support.\n\nLove,\nLev, Sabrina, Jacques, Jon, Clyde, Desi and the Mayfield\/Chilo's Family\n\nDonation center (register for the walk or donate):\nhttp:\/\/mswalk.mayfieldbk.com\n\nWalk info: Sunday, April 17th, 10am. Walk begins at Pier 26 in Tribeca, however we will meet at: Benvenuto Cafe, 369 Greenwich St. \u0040 the corner of Franklin and Greenwich St.\n\nParty info: Sunday, April 17th, 2pm - 8pm: Chilo's 323 Franklin Ave, chilosbk.com\n\nAttending the party? email us at: levmswalk\u0040gmail.com",
+      "created_time": "2016-04-05T03:39:26+0000",
+      "id": "197618263697397_886140114845205"
+    }, {
+      "story": "Mayfield Restaurant updated their cover photo.",
+      "created_time": "2016-04-05T03:39:07+0000",
+      "id": "197618263697397_886140068178543"
+    }, {
+      "message": "Dear friends and family,\n\nIt is with great pleasure that we announce this year's plan for the MS Walk 2016! Due to the overwhelming success of last year's festivities, we are once again going to throw a fundraising party after the walk! This will be the 12th year of our participation and the party is our way of saying thank you to all who have donated, walked, and supported us over the years. Last year we managed to shatter our fundraising goal and raised over $17,000! As well, this year, we will feature a silent auction and raffle at the event. Details for bidding and raffle items to follow.\n\nWe will be closing Chilo's on Sunday, April 17th for a pig roast, taco party, and beer fest after the walk. We've managed to get donations from some of our food and beverage purveyors along with volunteers to work the event so 100\u0025 of the money goes to the MS Society.\n\nBelow is a link to our donation center and details of the event. Follow the link to donate and\/or sign up of the walk. There is no requirement to do the walk to attend the party. We are asking for a $40 minimum donation for the party that can be made through the same link. Please email us directly if you are planning on attending.\n\nPlease share it with friends, family, and anyone who you know might be interested in donating and\/or participating in the festivities. There will also be an opportunity to donate at the event.\n\nThank you again for your continued support.\n\nLove,\n\nLev, Sabrina, Jacques, Jon, Clyde, Desi and the Mayfield\/Chilo's Family\n\nDonation center (register for the walk or donate):\nhttp:\/\/mswalk.mayfieldbk.com\n\nWalk info: Sunday, April 17th, 10am. Walk begins at Pier 26 in Tribeca, however we will meet at: Benvenuto Cafe, 369 Greenwich St. \u0040 the corner of Franklin and Greenwich St.\n\nParty info: Sunday, April 17th, 2pm - 8pm: Chilo's 323 Franklin Ave, chilosbk.com\n\nAttending the party? email us at: levmswalk\u0040gmail.com",
+      "created_time": "2016-04-03T17:16:51+0000",
+      "id": "197618263697397_885288594930357"
+    }, {
+      "message": "Our brunch is delicious, but don't take our word for it.\n\nhttp:\/\/www.thefoodjoy.com\/eating-out\/mayfield-brunch-crown-heights",
+      "created_time": "2016-04-03T17:15:54+0000",
+      "id": "197618263697397_885288201597063"
+    }, {
+      "message": "Check out these rockin' raw snap peas and grilled spring onions garnished with cumin lime yogurt, radish, breadcrumbs, and parmesan cheese.",
+      "created_time": "2016-03-27T23:09:04+0000",
+      "id": "197618263697397_879480052177878"
+    }, {
+      "message": "Take a sip of Tempranillo tonight. If you like dry Spanish reds, with balanced tannins and a hint of figs; this is a delicious glass with your name on it. \n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #tempranillo #wineporn #zagat #michelin #winning",
+      "created_time": "2016-03-19T21:41:01+0000",
+      "id": "197618263697397_872314369561113"
+    }, {
+      "message": "We are running a new special cocktail tonight made by our own \u0040dondress. Smoke N' Mirrors is a smoky, spicy and juicy cocktail comprised of scotch, mezcal, lemon, and spiced simple syrup.\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #gooddrinks #EEEATS #eater #mezcal #scotch #zagat #michelin #winning",
+      "created_time": "2016-03-19T21:36:15+0000",
+      "id": "197618263697397_872313269561223"
+    }, {
+      "message": "Hopefully you didn't miss dessert after brunch! It is a little known fact that a little bit of sugar after a filling breakfast can help boost your metabolism. But don't take my word for it, I ain't no Doctor.\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-03-13T18:31:42+0000",
+      "id": "197618263697397_868028956656321"
+    }, {
+      "message": "If you wanted to work with us, now is your chance! Spring and more big things are coming and we would love to get to know you. Email us a resume at info\u0040mayfieldbk.com and let's see if we have a spot for you. \n\nHey, if you know a friend who is looking, send them our way too!",
+      "created_time": "2016-03-13T15:49:07+0000",
+      "id": "197618263697397_867949583330925"
+    }, {
+      "message": "Mmmmmmm French Toast.\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-03-06T14:42:30+0000",
+      "id": "197618263697397_863839697075247"
+    }, {
+      "message": "Don't you wish this dessert spread was coming to your table? \n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-03-06T00:04:46+0000",
+      "id": "197618263697397_863515577107659"
+    }, {
+      "message": "Does this make you want brunch or is it too scary?\n\n#mayfieldbk #mayfieldrestaurant #brooklyn #nyc #crownheights #newyork #friends #smile #instamood #amazing #nofilter #style #food #instacool #igdaily #loveit #colorful #foodporn #cocktailporn #good #loveyou #goodfood #EEEATS #eater #fire #lit #zagat #michelin #winning",
+      "created_time": "2016-03-05T14:50:58+0000",
+      "id": "197618263697397_863293287129888"
+    }],
+    "paging": {
+      "previous": "https:\/\/graph.facebook.com\/v2.7\/197618263697397\/posts?since=1471081260&access_token=EAAYxlwZBlt5MBAJ2oafH5p9I69DGH4usQVlRxUjazzRZBQCZBZC6kOiwFxko8icNJMw5l6KtF3Dqud25ZBCp5wZCZAj7wmuW9ZBHlz3ExjXksnZAVBHYnKDMU6eZBdvsJWNhVpe39S9TfZCRBSuoEq6RMvKApKxzHho3dEZD&limit=25&__paging_token=enc_AdAnechlZBZCRa4yt48lvXQZAoN2oFHUEHm5ktaR72sy4xirzFZA1gMZCymRDMzNkhsnUK8aeZCXOIeioJGwCm8p90WivH8KIHdd9Ls5XbTZCyuojb99gZDZD&__previous=1",
+      "next": "https:\/\/graph.facebook.com\/v2.7\/197618263697397\/posts?access_token=EAAYxlwZBlt5MBAJ2oafH5p9I69DGH4usQVlRxUjazzRZBQCZBZC6kOiwFxko8icNJMw5l6KtF3Dqud25ZBCp5wZCZAj7wmuW9ZBHlz3ExjXksnZAVBHYnKDMU6eZBdvsJWNhVpe39S9TfZCRBSuoEq6RMvKApKxzHho3dEZD&limit=25&until=1457189458&__paging_token=enc_AdDQVR2oZChZBoZAzG5fyLUaXQKmaOZAnH4xnzx6EiATo0NWJMN5t1xUTfQ4xc2rB2NR4No7KwYj2lujiNwT7ijb3dMoDfqrEmHqS7qC7qJGniAJSwZDZD"
+    }
+  }
+}
