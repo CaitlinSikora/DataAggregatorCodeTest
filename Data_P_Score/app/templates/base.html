@@ -1,0 +1,27 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - P-Score Estimation</title>
+    {% else %}
+    <title>Small Business P-Score Estimator</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>{% if title %}
+    <h1>{{ title }} - P-Score Estimation</h1>
+    {% else %}
+    <h1>Small Business P-Score Estimator</h1>
+    {% endif %}</div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

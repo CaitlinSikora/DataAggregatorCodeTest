@@ -1,0 +1,23 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Choose Company</h1>
+    <form action="" method="post" name="login">
+        {{ form.hidden_tag() }}
+        <p>
+            Please enter the name of the company you'd like to review:<br>
+            Company Name{{ form.company(size=80) }}<br>
+            Owner First Name{{ form.owner_first(size=80) }}<br>
+            Owner Last Name{{ form.owner_last(size=80) }}<br>
+            Location{{ form.location(size=80) }}<br>
+            {% for error in form.company.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </p>
+        <p><input type="submit" value="Review!"></p>
+        {% for info in providers %}
+            <p>{{ info }}</p>
+        {% endfor %}<br>
+    </form>
+{% endblock %}
