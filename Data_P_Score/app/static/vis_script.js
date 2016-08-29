@@ -63,7 +63,7 @@ function InitChart(barData) {
 
 			vis.append("text")
 				.attr("x", WIDTH-MARGINS.right)
-         		.attr("y", yRange(mean)+8)
+         		.attr("y", yRange(mean)-20)
          		.attr("style", "font-size:30px;")
                 .text(mean)    
 
