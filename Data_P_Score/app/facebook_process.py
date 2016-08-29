@@ -184,7 +184,7 @@ def posting_habits(response):
 
 	sent_report = str(int(math.floor(ave_sent * 100)))+"%"
 	print sent_report
-	if sent_report>=0:
+	if ave_sent>=0:
 		mood = "positive"
 	else:
 		mood = "negative"

@@ -3,6 +3,7 @@ from app import app
 from .forms import BusinessForm
 from yelp_process import search_yelp
 from facebook_process import get_facebook
+from google_process import google_score
 
 @app.route('/result')
 def result():
@@ -10,9 +11,11 @@ def result():
     owner = session['owner']
     business_type = session['business_type']
     location = session['location']
-    yelp_results = search_yelp(business_name,location)
-    facebook_results = get_facebook(business_name,location)
-    results = [yelp_results,facebook_results]
+    #yelp_results = search_yelp(business_name,location)
+    google_results = google_score(business_name,owner,business_type,location)
+    #facebook_results = get_facebook(business_name,location)
+    #results = [yelp_results,facebook_results, google_results]
+    results = [google_results]
     return render_template('result.html',
                            title=business_name,
                            business_name=business_name,
