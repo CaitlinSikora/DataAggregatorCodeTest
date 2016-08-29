@@ -1,0 +1,14 @@
+*.pyc
+*.pyo
+app.db
+search.db
+flask
+config.py
+linked_in_process.py
+trends_process.py
+bond_env
+google_mayfield_facebook_brooklyn.json
+lev_google.json
+mayfield_google.json
+mayfieldfacebook.json
+yelp_business.json

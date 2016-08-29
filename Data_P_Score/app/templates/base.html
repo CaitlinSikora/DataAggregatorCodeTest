@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="static/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu" rel="stylesheet">
+    {% if title %}
+    <title>{{ title }} P-Score</span></title>
+    {% else %}
+    <title>Small Business P-Score Estimator</title>
+    {% endif %}
+    <link rel="stylesheet" href="static/base.css" />
+  </head>
+  <body>
+    <div class="title_bar">{% if title %}
+    <h1>{{ title }} P-Score: <span id="final"></h1>
+    {% else %}
+    <h1>Small Business P-Score Estimator</h1>
+    {% endif %}</div>
+    <div class = "content">
+        {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

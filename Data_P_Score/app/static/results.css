@@ -1,0 +1,86 @@
+/* Here is a bunch of beautiful CSS to make it look better. */
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    stroke-width: 0.5;
+    /*stroke-dasharray: 1;*/
+    shape-rendering: crispEdges;
+    stroke-linecap: round;
+}
+
+.axis text {
+    fill: black;
+    stroke: none;
+    font-size: 10px;
+}
+
+.mean {
+    stroke: black;
+    stroke-width: 0.5;
+    /*stroke-dasharray: 1;*/
+    shape-rendering: crispEdges;
+    stroke-linecap: round;
+}
+
+.x text {
+    fill: black;
+    stroke: none;
+    font-size: 20px;
+}
+
+.tick {
+    stroke: black;
+    /*stroke-dasharray: 1,2;*/
+}
+
+.bar {
+    fill: black;
+    border-radius: 1px;
+    border: 1px solid;
+    z-index: 999;
+}
+
+.plot {
+    opacity: 0.6;
+    height: auto;
+    min-width: 674px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    text-align:center;
+    background-size: cover;
+    vertical-align: middle;
+    overflow:show;
+}
+
+h2 {
+	margin:34px 0 0;
+    display: inline;
+    vertical-align: middle;
+    font-size: 30px;
+    opacity: 1;
+}
+
+h3 {
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 0.5;
+    padding:0px;
+    opacity: 1;
+}
+
+.messages {
+	text-align: left;
+    margin: 0px 25px 0px 25px;
+    line-height: 1.2;
+    font-size: 16px;
+}
+
+.messages p {
+    text-align: left;
+    margin: 0px 40px 0px 80px;
+    font-size: 14px;
+    line-height:0.5;
+}

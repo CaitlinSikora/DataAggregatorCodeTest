@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="static/results.css" />
+
+    <h2>{{ business_name }}, {{ location }}</h2>
+    <h3>{{ business_type }} business owned by {{ owner }}</h3>
+    <p class="platform"></p>
+    <div class="plot"><svg id="visualisation" width="1000" height="360"></svg></div>
+    <div class="messages"><p></p></div>
+
+	<script type="text/javascript" src="static/vis_script.js"></script>
+	<script>
+		var barData = {{ results | tojson }};
+        InitChart(barData);
+    </script>
+
+{% endblock %}

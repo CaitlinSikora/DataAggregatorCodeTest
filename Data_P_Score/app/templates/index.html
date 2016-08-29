@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="static/base.css" />
+    <div class="contain_form">
+        <h1>Choose Business</h1>
+        <form action="" method="post" name="login">
+            {{ form.hidden_tag() }}
+            <p>Please enter the name of the business you'd like to review:</p>
+                <p>
+                Business Name {{ form.business_name(size=80) }}<br>
+                Owner {{ form.owner(size=91) }}<br>
+                Business Type {{ form.business_type(size=81) }}<br>
+                City {{ form.location(size=94) }}<br>
+            </p>
+            <p><input type="submit" value="Review!"></p>
+        </form>
+    </div>
+{% endblock %}
