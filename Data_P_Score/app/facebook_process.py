@@ -16,7 +16,7 @@ alerts = ["This business does not appear to have a page on Facebook.",
 
 def get_facebook(business_name,location):
 	# create empty list of alerts to send
-	send_alerts = []
+	send_alerts = ["Facebook is used to evaluate the business's consistency and frequency in engagement."]
 	
 	# get the facebook alias via a google search
 	alias = grab_facebook_alias(business_name,location)
@@ -76,7 +76,7 @@ def get_facebook(business_name,location):
 		if score < 0.7:
 			send_alerts.append(alerts[i+1])
 	final_score = score_total * 0.25
-	if len(send_alerts) == 0:
+	if len(send_alerts) == 1:
 		send_alerts.append(alerts[5])
 	print final_score, send_alerts
 	return {

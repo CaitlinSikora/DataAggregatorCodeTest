@@ -1,5 +1,6 @@
 from googleapiclient.discovery import build
 from app import app
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 search_engine_id = app.config['GOOGLE_KEYS']['search_engine_id']
 apis = app.config['GOOGLE_KEYS']['apis']
@@ -38,7 +39,6 @@ def grab_facebook_alias(business_name,location):
     search_term = business_name+' '+location+' facebook'
     results = try_keys(search_term,apis)
     for item in results['items']:
-        print item['link']
         if item['link'][:25]=='https://www.facebook.com/':
             alias = item['link'][25:]
             if alias[-1:]=='/':
@@ -47,21 +47,40 @@ def grab_facebook_alias(business_name,location):
             return alias
     return None
 
-def grab_wide(results):
-    if results == None:
-        return None
-    parsed = results
-    tester = results['queries']['request']
-    # print tester
-    if tester[0]['totalResults']!='0'and tester[0]['totalResults']>0:
-        links = []
-        for item in parsed['items']:
-            if (item['image']['width']/item['image']['height'])>1.5:
-              links.append(item['link'])
-        if len(links)==0:
-            return grab_widest(results)
+def owner_score(owner, location, business_type):
+    owner_score = 0.5
+    search_term = business_name+' '+location+' '+business_type
+    results = try_keys(search_term,apis)
+
+    # get total number of results
+    head = results['queries']['request']
+    num_hits = head[0]['totalResults']
+    print num_hits
+
+    # parse data for news articles and sentiment
+    sent_total = 0
+    sid = SentimentIntensityAnalyzer()
+    count_news = 0
+    news_names = {'http://ny.eater.com':0,
+                    'http://www.nytimes.':0,
+                    'http://www.grubstre':0,
+                    'http://www.newyorke':0,
+                    'http://observer.com':0,
+                    'http://www.villagev':0,
+                    'http://www.brownsto':0}
+    for item in results['items']:
+        # try to count news articles
+        if item['link'][:19]in news_names:
+            count_news+=1 
         else:
-            ind = randint(0,len(links)-1)
-            return links[ind]
-    else:
-        return None
+            for element in item['pagemap']:
+                if element == "review" or element == "newsarticle" or element == "article":
+                    count_news+=1
+
+        # sentiment analysis of snippets
+        ss = sid.polarity_scores(item['snippet'])
+        listing_sent = ss["compound"]
+        sent_total += listing_sent
+
+    ave_sent = sent_total / len(results['items'])
+

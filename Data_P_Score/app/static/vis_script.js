@@ -65,7 +65,7 @@ function InitChart(barData) {
 				.attr("x", WIDTH-MARGINS.right)
          		.attr("y", yRange(mean)+8)
          		.attr("style", "font-size:30px;")
-                .text(mean)        
+                .text(mean)    
 
             vis.selectAll('rect')
                 .data(barData)
@@ -85,11 +85,11 @@ function InitChart(barData) {
                     ry: '5',
                     rx: '5'
                 })
-                .attr('fill', '#1474cd')
+                .attr('fill', '#5caaf2')
                 .style("opacity", .65)
                 .on('mouseover', function(d) {
                     d3.select(this)
-                        .attr('fill', '#5caaf2');
+                        .attr('fill', '#1474cd');
                     console.log(d);
                     p_messages='';
                     for (i=0;i<d.z.length;i++){
@@ -99,7 +99,7 @@ function InitChart(barData) {
                 })
                 .on('mouseout', function(d) {
                     d3.select(this)
-                        .attr('fill', '#1474cd');
+                        .attr('fill', '#5caaf2');
                 });
 
         }

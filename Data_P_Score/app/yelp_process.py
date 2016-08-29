@@ -11,7 +11,7 @@ alerts = ["This business does not appear to have a page on Yelp.",
 
 def search_yelp(business_name,location):
 	# create empty list of alerts to send
-	send_alerts = []
+	send_alerts = ["Yelp is used to assess the business's performance compared to its peers."]
 	# set up client to do the search
 	creds = app.config['YELP_KEYS']
 	auth = Oauth1Authenticator(**creds)
@@ -86,7 +86,7 @@ def search_yelp(business_name,location):
 		if score < 0.7:
 			send_alerts.append(alerts[i+1])
 	final_score = score_total * 0.25
-	if len(send_alerts) == 0:
+	if len(send_alerts) == 1:
 		send_alerts.append(alerts[5])
 	print final_score, send_alerts
 	return {
@@ -198,8 +198,6 @@ def peer_to_peer(client,categories,postal_code,rating,review_count, mentions):
 	if score > 1.0:
 		score = 1.0
 	return score, postal_count
-
-# Can you get open_date of business? Is more info available in search api? pricerange? owners? website?
 
 
 
