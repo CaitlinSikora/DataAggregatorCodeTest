@@ -24,15 +24,37 @@ def search_yelp(business_name,location):
 	try:
 		response = client.search(**params)
 	except:
+		print "not found"
 		send_alerts.append(alerts[0])
 		return 0.3, send_alerts
-	mentions = len(response.businesses)
-	business_id = response.businesses[0].id
-	categories = response.businesses[0].categories
-	postal_code = response.businesses[0].location.postal_code
-	current_date = datetime.strftime(datetime.now(), '%Y%m%d')
-	rating = response.businesses[0].rating
-	review_count = response.businesses[0].review_count
+
+	# test if results are the right business
+	found_business = False
+	for j,listing in enumerate(response.businesses):
+		print listing.name
+		for word_listing in listing.name.split():
+			for word_name in business_name.split():
+				print word_name.lower()
+				print word_listing.lower()
+				if word_name.lower() == word_listing.lower():
+					found_business = True
+					busind = j
+					break
+		if found_business==True:
+			print "should break"
+			break
+	if found_business:
+		mentions = len(response.businesses)
+		business_id = response.businesses[busind].id
+		categories = response.businesses[busind].categories
+		postal_code = response.businesses[busind].location.postal_code
+		current_date = datetime.strftime(datetime.now(), '%Y%m%d')
+		rating = response.businesses[busind].rating
+		review_count = response.businesses[busind].review_count
+	else:
+		print "not found"
+		send_alerts.append(alerts[0])
+		return 0.3, send_alerts
 
 	# search for specifics for your business
 	response = client.get_business(business_id)
@@ -45,8 +67,8 @@ def search_yelp(business_name,location):
 				peer_score[0]]
 	
 	# add customized alerts
-	alerts.append("The Yelp rating "+str(rating)+" and record of "+str(review_count)+" reviews do not provide a consistent track record of customer satisfaction.")
-	alerts.append("With a comparative score of "+str(peer_score[0])+", this business has not performed competitively amongst a group of "+str(peer_score[1])+" nearby similar businesses.")
+	alerts.append("The Yelp rating %.1f and record of %d reviews do not provide a consistent track record of customer satisfaction." % (rating, review_count))
+	alerts.append("With a comparative score of %.3f, this business has not performed competitively amongst a group of %d nearby similar businesses." % (peer_score[0],peer_score[1]))
 
 	# calculate average of different scores
 	score_total=0
@@ -123,7 +145,6 @@ def peer_to_peer(client,categories,postal_code,rating,review_count, mentions):
 	review_count_sum = 0
 	postal_count = 0
 	for category in categories:
-		print category.name
 		params = {
 			'term':category.name,
 		    'location':postal_code
