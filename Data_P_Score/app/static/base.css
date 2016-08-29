@@ -1,0 +1,32 @@
+/* Some CSS for a little style */
+
+.content {
+            background:white;
+            padding: 20px 20px;
+            color: #444;
+            font-family: 'Roboto', sans-serif;
+            text-align:center;
+            vertical-align:middle;
+        }
+        
+.title_bar {
+    background-color: #1474cd;
+    padding: 5px 15px 5px 15px;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+.contain_form {
+        vertical-align:middle;
+        text-align:left;
+        width:700px;
+        padding:24px;
+}
+
+h1 {
+    padding:10px 0;
+}
+
+p {
+    padding:7px 0;
+}

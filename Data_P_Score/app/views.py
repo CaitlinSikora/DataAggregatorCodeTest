@@ -13,21 +13,6 @@ def result():
     yelp_results = search_yelp(business_name,location)
     facebook_results = get_facebook(business_name,location)
     results = [yelp_results,facebook_results]
-    # results = [{
-    #     'x': "Yelp 0.7",
-    #     'y': 0.7,
-    #     'z': ["message 1"]
-    #   },
-    #   {
-    #     'x': "Facebook 0.5",
-    #     'y': 0.5,
-    #     'z': ["message 2"]
-    #   },
-    #   {
-    #     'x': "Google 0.8",
-    #     'y': 0.8,
-    #     'z': ["message 3"]
-    #   }]
     return render_template('result.html',
                            title=business_name,
                            business_name=business_name,
