@@ -10,8 +10,8 @@ def result():
     owner = session['owner']
     business_type = session['business_type']
     location = session['location']
-    yelp_results = search_yelp(business_name,location)
-    #facebook_results = get_facebook(company,location)
+    #yelp_results = search_yelp(business_name,location)
+    facebook_results = get_facebook(business_name,location)
     return render_template('result.html',
                            title=business_name,
                            business_name=business_name,

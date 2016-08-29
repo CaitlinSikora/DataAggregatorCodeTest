@@ -69,6 +69,7 @@ def search_yelp(business_name,location):
 	# add customized alerts
 	alerts.append("The Yelp rating %.1f and record of %d reviews do not provide a consistent track record of customer satisfaction." % (rating, review_count))
 	alerts.append("With a comparative score of %.3f, this business has not performed competitively amongst a group of %d nearby similar businesses." % (peer_score[0],peer_score[1]))
+	alerts.append("With a Yelp rating of %.1f and %d reviews, this business has performed competitively amongst a group of %d nearby similar businesses." % (rating,review_count,peer_score[1]))
 
 	# calculate average of different scores
 	score_total=0
@@ -78,6 +79,8 @@ def search_yelp(business_name,location):
 		if score < 0.7:
 			send_alerts.append(alerts[i+1])
 	final_score = score_total * 0.25
+	if len(send_alerts) == 0:
+		send_alerts.append(alerts[5])
 	print final_score, send_alerts
 	return final_score, send_alerts
 
