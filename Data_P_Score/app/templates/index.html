@@ -2,16 +2,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Choose Business</h1>
-    <form action="" method="post" name="login">
-        {{ form.hidden_tag() }}
-        <p>
-            Please enter the name of the business you'd like to review:<br>
-            Business Name{{ form.business_name(size=80) }}<br>
-            Owner{{ form.owner(size=80) }}<br>
-            Business Type{{ form.business_type(size=80) }}<br>
-            City{{ form.location(size=80) }}<br>
-        </p>
-        <p><input type="submit" value="Review!"></p>
-    </form>
+    <style>
+    .contain_form {
+        vertical-align:middle;
+        text-align:left;
+        width:700px;
+        padding:24px;
+    }
+    h1 {
+        padding:10px 0;
+    }
+    p {
+        padding:7px 0;
+    }
+    </style>
+    <div class="contain_form">
+        <h1>Choose Business</h1>
+        <form action="" method="post" name="login">
+            {{ form.hidden_tag() }}
+            <p>Please enter the name of the business you'd like to review:</p>
+                <p>
+                Business Name {{ form.business_name(size=80) }}<br>
+                Owner {{ form.owner(size=91) }}<br>
+                Business Type {{ form.business_type(size=81) }}<br>
+                City {{ form.location(size=94) }}<br>
+            </p>
+            <p><input type="submit" value="Review!"></p>
+        </form>
+    </div>
 {% endblock %}

@@ -26,7 +26,11 @@ def search_yelp(business_name,location):
 	except:
 		print "not found"
 		send_alerts.append(alerts[0])
-		return 0.3, send_alerts
+		return {
+				'x': "Yelp %.2f"% 0.3,
+				'y': 0.3,
+				'z': send_alerts
+			}
 
 	# test if results are the right business
 	found_business = False
@@ -41,7 +45,6 @@ def search_yelp(business_name,location):
 					busind = j
 					break
 		if found_business==True:
-			print "should break"
 			break
 	if found_business:
 		mentions = len(response.businesses)
@@ -54,7 +57,11 @@ def search_yelp(business_name,location):
 	else:
 		print "not found"
 		send_alerts.append(alerts[0])
-		return 0.3, send_alerts
+		return {
+				'x': "Yelp %.2f"% 0.3,
+				'y': 0.3,
+				'z': send_alerts
+			}
 
 	# search for specifics for your business
 	response = client.get_business(business_id)
@@ -82,7 +89,11 @@ def search_yelp(business_name,location):
 	if len(send_alerts) == 0:
 		send_alerts.append(alerts[5])
 	print final_score, send_alerts
-	return final_score, send_alerts
+	return {
+				'x': "Yelp %.2f"% final_score,
+				'y': final_score,
+				'z': send_alerts
+			}
 
 def is_open(response):
 	# if business is listed as permanently closed, it has either failed already 
@@ -118,6 +129,9 @@ def contact_info(response, current_date):
 		menu_update = int(current_date)+20000
 	if int(current_date)-int(menu_update)<=10000:
 		score+=0.1
+
+	if score > 1.0:
+		score = 1.0
 	return score
 
 def reviews_ratings(response, current_date):
@@ -140,6 +154,9 @@ def reviews_ratings(response, current_date):
 	ss = sid.polarity_scores(response.business.reviews[0].excerpt)
 	review_sent = 0.1*ss["compound"]
 	score += review_sent
+
+	if score > 1.0:
+		score = 1.0
 	return score
 
 def peer_to_peer(client,categories,postal_code,rating,review_count, mentions):
@@ -147,6 +164,8 @@ def peer_to_peer(client,categories,postal_code,rating,review_count, mentions):
 	ratings_sum = 0
 	review_count_sum = 0
 	postal_count = 0
+
+	# request data for businesses in each category in the same area
 	for category in categories:
 		params = {
 			'term':category.name,
@@ -154,19 +173,30 @@ def peer_to_peer(client,categories,postal_code,rating,review_count, mentions):
 		}
 		peer_response = client.search(**params)
 		for listing in peer_response.businesses:
+			# if business is in same zip code, keep track of ratings and review_count
 			if listing.location.postal_code == postal_code:
 				ratings_sum += listing.rating * listing.review_count
 				review_count_sum += listing.review_count
 				postal_count += 1
+
+	# calculate average rating and number of reviews
 	ave_rating = float(ratings_sum)/review_count_sum
 	ave_reviews = float(review_count_sum)/postal_count
+
+	# raise/lower score for more/less reviews and higher/lower ratings compared with peers
 	score += 0.2 * (rating-ave_rating)/4
 	score += 0.2 * (review_count-ave_reviews)/ave_reviews
+
+	# boost score for less competition and lower it for more
 	if postal_count < 7:
 		score += (7.0 - postal_count) / 28
 		print "#competition",(7.0 - postal_count) / 28, postal_count
+	# boost score if business in mentioned in comparable listings compared to number of directly competing businesses
 	if mentions > 0.35*postal_count:
 		score += 0.1
+
+	if score > 1.0:
+		score = 1.0
 	return score, postal_count
 
 # Can you get open_date of business? Is more info available in search api? pricerange? owners? website?

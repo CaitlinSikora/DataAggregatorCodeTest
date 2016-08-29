@@ -23,7 +23,11 @@ def get_facebook(business_name,location):
 	if not alias:
 		print "not found"
 		send_alerts.append(alerts[0])
-		return 0.3, send_alerts
+		return {
+				'x': "Facebook %.2f"% 0.3,
+				'y': 0.3,
+				'z': send_alerts
+			}
 	
 	# set up parameters for the request
 	url = 'https://graph.facebook.com/v2.7/'+alias+'?access_token='+ACCESS_TOKEN
@@ -37,11 +41,19 @@ def get_facebook(business_name,location):
 	except:
 		print "not found"
 		send_alerts.append(alerts[0])
-		return 0.3, send_alerts
-	if 'name' not in response or response['location']['city'].lower()!=location.lower():
+		return {
+				'x': "Facebook %.2f"% 0.3,
+				'y': 0.3,
+				'z': send_alerts
+			}
+	if 'name' not in response or response['location']['city'].lower()!=location.lower().split()[0].replace(',',''):
 		print "not found"
 		send_alerts.append(alerts[0])
-		return 0.3, send_alerts
+		return {
+				'x': "Facebook %.2f"% 0.3,
+				'y': 0.3,
+				'z': send_alerts
+			}
 
 	# calculate the scores
 	checkin_score = checkins_fans(response)
@@ -67,7 +79,11 @@ def get_facebook(business_name,location):
 	if len(send_alerts) == 0:
 		send_alerts.append(alerts[5])
 	print final_score, send_alerts
-	return final_score, send_alerts
+	return {
+				'x': "Facebook %.2f"% final_score,
+				'y': final_score,
+				'z': send_alerts
+			}
 
 def is_open(response):
 	# if business is listed as permanently closed, it has either failed already 
@@ -108,6 +124,9 @@ def verified_info(response):
 				if response['payment_options'][item] == 1:
 					score-=0.1
 		score+=(0.1*(payment_score/4.0))
+
+	if score > 1.0:
+		score = 1.0
 	return score
 
 def checkins_fans(response):
@@ -120,6 +139,9 @@ def checkins_fans(response):
 	  	score+=float(fans)/(2*checkins)
 	  	talking = response['talking_about_count']
 		score+=talking/400.0
+
+	if score > 1.0:
+		score = 1.0
 	return score, checkins, fans, talking
 
 def posting_habits(response):
@@ -155,8 +177,10 @@ def posting_habits(response):
 	print ave_spacing
 
 	# adjust score to be higher for high sentiment and frequent posts
-	score += (31-ave_spacing)/(10.0*ave_spacing)
-	score += ave_sent / 4.0
+	score += (31-ave_spacing)/(14.0*ave_spacing)
+	print (31-ave_spacing)/(14.0*ave_spacing)
+	score += ave_sent / 5.0
+	print ave_sent / 5.0
 
 	sent_report = str(int(math.floor(ave_sent * 100)))+"%"
 	print sent_report
@@ -164,5 +188,7 @@ def posting_habits(response):
 		mood = "positive"
 	else:
 		mood = "negative"
-	
+
+	if score > 1.0:
+		score = 1.0
 	return score, ave_spacing, sent_report, mood

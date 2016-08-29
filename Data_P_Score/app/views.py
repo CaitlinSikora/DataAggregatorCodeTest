@@ -10,22 +10,39 @@ def result():
     owner = session['owner']
     business_type = session['business_type']
     location = session['location']
-    #yelp_results = search_yelp(business_name,location)
+    yelp_results = search_yelp(business_name,location)
     facebook_results = get_facebook(business_name,location)
+    results = [yelp_results,facebook_results]
+    # results = [{
+    #     'x': "Yelp 0.7",
+    #     'y': 0.7,
+    #     'z': ["message 1"]
+    #   },
+    #   {
+    #     'x': "Facebook 0.5",
+    #     'y': 0.5,
+    #     'z': ["message 2"]
+    #   },
+    #   {
+    #     'x': "Google 0.8",
+    #     'y': 0.8,
+    #     'z': ["message 3"]
+    #   }]
     return render_template('result.html',
                            title=business_name,
                            business_name=business_name,
                            owner=owner,
                            business_type=business_type,
-                           location=location)
+                           location=location,
+                           results=results)
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def choose_business():
     form = BusinessForm()
     if form.validate_on_submit():
-        flash('Data requested for business_name="%s", owner="%s", business_type="%s", location="%s"' %
-          (form.business_name.data, form.owner.data, form.business_type.data, form.location.data))
+        # flash('Data requested for business_name="%s", owner="%s", business_type="%s", location="%s"' %
+        #   (form.business_name.data, form.owner.data, form.business_type.data, form.location.data))
         session['business_name'] = form.business_name.data
         session['owner'] = form.owner.data
         session['business_type'] = form.business_type.data

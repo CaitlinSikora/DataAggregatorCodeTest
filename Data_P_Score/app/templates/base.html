@@ -1,27 +1,38 @@
 <html>
   <head>
+    <script src="static/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu" rel="stylesheet">
     {% if title %}
-    <title>{{ title }} - P-Score Estimation</title>
+    <title>{{ title }} P-Score</span></title>
     {% else %}
     <title>Small Business P-Score Estimator</title>
     {% endif %}
+    <style>
+        .content {
+            background:white;
+            padding: 20px 20px;
+            color: #444;
+            font-family: 'Roboto', sans-serif;
+            text-align:center;
+            vertical-align:middle;
+        }
+        .title_bar {
+            background-color: #1474cd;
+            padding: 5px 15px 5px 15px;
+            color: white;
+            font-family: 'Ubuntu', sans-serif;
+
+        }
+    </style>
   </head>
   <body>
-    <div>{% if title %}
-    <h1>{{ title }} - P-Score Estimation</h1>
+    <div class="title_bar">{% if title %}
+    <h1>{{ title }} <span id="final"></h1>
     {% else %}
     <h1>Small Business P-Score Estimator</h1>
     {% endif %}</div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-    {% for message in messages %}
-        <li>{{ message }} </li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
+    <div class = "content">
+        {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
