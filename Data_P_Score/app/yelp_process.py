@@ -24,7 +24,7 @@ def search_yelp(business_name,location):
 	try:
 		response = client.search(**params)
 	except:
-		print "not found"
+		print "not found on yelp"
 		send_alerts.append(alerts[0])
 		return {
 				'x': "Yelp %.2f"% 0.3,
@@ -47,6 +47,7 @@ def search_yelp(business_name,location):
 		if found_business==True:
 			break
 	if found_business:
+		print "yelp business", response.businesses[busind].name
 		mentions = len(response.businesses)
 		business_id = response.businesses[busind].id
 		categories = response.businesses[busind].categories
@@ -55,7 +56,7 @@ def search_yelp(business_name,location):
 		rating = response.businesses[busind].rating
 		review_count = response.businesses[busind].review_count
 	else:
-		print "not found"
+		print "not found on yelp"
 		send_alerts.append(alerts[0])
 		return {
 				'x': "Yelp %.2f"% 0.3,
@@ -81,14 +82,13 @@ def search_yelp(business_name,location):
 	# calculate average of different scores
 	score_total=0
 	for i, score in enumerate(scores):
-		print score
 		score_total += score
 		if score < 0.7:
 			send_alerts.append(alerts[i+1])
 	final_score = score_total * 0.25
 	if len(send_alerts) == 1:
 		send_alerts.append(alerts[5])
-	print final_score, send_alerts
+	print "yelp finals",final_score, send_alerts
 	if final_score > 1.0:
 		final_score = 1.0
 	return {
