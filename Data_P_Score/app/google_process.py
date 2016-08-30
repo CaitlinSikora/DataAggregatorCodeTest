@@ -38,20 +38,37 @@ def try_keys(key_word,apis):
     google = None
     for i,key in enumerate(apis):
         if not google:
-            print "key", i
+            print "key used", i
             google = google_search(key_word,apis[i], search_engine_id)
     return google
 
+def check_facebook_alias(item, business_name, location):
+    found = False
+    title = item['title'].split()
+    print "compare facebook alias",title[0].lower(),business_name.split()[0].lower()
+    if title[0].lower() == business_name.split()[0].lower():
+        if 'postaladdress' in item['pagemap']:
+            local = item['pagemap']['postaladdress'][0]
+            print local
+            if 'addresslocality' in local:
+                print "found addresslocality"
+                print local['addresslocality']
+                print "compare local",local['addresslocality'].lower(), location.split()[0].lower()
+                if local['addresslocality'].lower() == location.split(',')[0].lower():
+                    return True
+    return False
+
 def grab_facebook_alias(business_name,location):
-    search_term = business_name+' '+location+' facebook'
+    search_term = 'facebook '+business_name+' '+location
     results = try_keys(search_term,apis)
     for item in results['items']:
         if item['link'][:25]=='https://www.facebook.com/':
             alias = item['link'][25:]
             if alias[-1:]=='/':
                 alias = alias[:-1]
-            print alias
-            return alias
+            if check_facebook_alias(item,business_name,location):
+                print "facebook alias",alias
+                return alias
     return None
 
 def google_score(business_name,owner,business_type,location):
@@ -63,7 +80,7 @@ def google_score(business_name,owner,business_type,location):
         proj_score = projection_score(business_name,location)
         scores = [own_score, proj_score[0]]
     except:
-        print "not found"
+        print "not found on google"
         send_alerts.append(alerts[0])
         return {
                 'x': "Google %.2f"% 0.2,
@@ -78,7 +95,6 @@ def google_score(business_name,owner,business_type,location):
     # calculate average of different scores
     score_total=0
     for i, score in enumerate(scores):
-        print score
         score_total += score
         if score < 0.7:
             send_alerts.append(alerts[i+1])
@@ -87,7 +103,7 @@ def google_score(business_name,owner,business_type,location):
         final_score = 1.0
     if len(send_alerts) == 1:
         send_alerts.append(alerts[3])
-    print final_score, send_alerts
+    print "google",final_score, send_alerts
     return {
                 'x': "Google %.2f"% final_score,
                 'y': final_score,
@@ -96,57 +112,59 @@ def google_score(business_name,owner,business_type,location):
 
 def owner_score(owner, business_type, business_name):
     score = 0.5
-    search_term = owner+' '+business_type+' '+business_name
-    results = try_keys(search_term,apis)
+    print "owner",owner
+    if owner:
+        search_term = owner+' '+business_type+' '+business_name
+        results = try_keys(search_term,apis)
 
-    # get total number of results and raise score for more results
-    head = results['queries']['request']
-    num_hits = int(head[0]['totalResults'])
-    print num_hits
-    score+=(num_hits-20)/500
-    print (num_hits-20)/500
+        # get total number of results and raise score for more results
+        head = results['queries']['request']
+        num_hits = int(head[0]['totalResults'])
+        print "number hits", num_hits
+        score+=(num_hits-20)/500
 
-    # parse data for news articles and sentiment
-    sent_total = 0
-    sid = SentimentIntensityAnalyzer()
-    count_news = 0
-    news_sent = 0
-    news_names = {'http://ny.eater.com':0,
-                    'http://www.nytimes.':0,
-                    'http://www.grubstre':0,
-                    'http://www.newyorke':0,
-                    'http://observer.com':0,
-                    'http://www.villagev':0,
-                    'http://www.brownsto':0}
-    for item in results['items']:
-        news = False
-        # try to count news articles
-        if item['link'][:19]in news_names:
-            news = True
-        else:
-            for element in item['pagemap']:
-                if element == "review" or element == "newsarticle" or element == "article":
-                    news=True
-                    print element
-        if news == True:
-            count_news += 1
-        print "news counts",count_news
+        # parse data for news articles and sentiment
+        sent_total = 0
+        sid = SentimentIntensityAnalyzer()
+        count_news = 0
+        news_sent = 0
+        news_names = {'http://ny.eater.com':0,
+                        'http://www.nytimes.':0,
+                        'http://www.grubstre':0,
+                        'http://www.newyorke':0,
+                        'http://observer.com':0,
+                        'http://www.villagev':0,
+                        'http://www.brownsto':0}
+        for item in results['items']:
+            news = False
+            # try to count news articles
+            if item['link'][:19]in news_names:
+                news = True
+            else:
+                for element in item['pagemap']:
+                    if element == "review" or element == "newsarticle" or element == "article":
+                        news=True
+            if news == True:
+                count_news += 1
 
-        # sentiment analysis of snippets
-        ss = sid.polarity_scores(item['snippet'])
-        listing_sent = ss["compound"]
-        print item['snippet'],listing_sent
-        sent_total += listing_sent
-        # keep track of sentiment of news snippets
-        if news == True:
-            news_sent+=listing_sent
+            # sentiment analysis of snippets
+            ss = sid.polarity_scores(item['snippet'])
+            listing_sent = ss["compound"]
+            sent_total += listing_sent
+            # keep track of sentiment of news snippets
+            if news == True:
+                news_sent+=listing_sent
 
-    # calculate average sentiment of snippets and news snippets and adjust score accordingly
-    ave_sent = sent_total / len(results['items'])
-    ave_news_sent = news_sent/count_news
-    score += ave_sent / 5.0
-    score += ave_news_sent / 4.0
-    score += count_news / 30.0
+        # calculate average sentiment of snippets and news snippets and adjust score accordingly
+        ave_sent = sent_total / len(results['items'])
+        ave_news_sent = news_sent/count_news
+        score += ave_sent / 5.0
+        score += ave_news_sent / 4.0
+        score += count_news / 30.0
+        print "news count",count_news
+        print "ave sentiment", ave_sent
+    else:
+        score = 0.3
     
     return score
 
@@ -169,19 +187,16 @@ def projection_score(business_name,location):
             for review in reviews:
                 if 'datepublished' in review:
                     date = int(datetime.strptime(review['datepublished'], '%Y-%m-%d').strftime("%s"))
-                    print date
                     dates.append(date)
-            print dates
             for rating in ratings:
                 if 'ratingvalue' in rating:
                     ratings_data.append(float(rating['ratingvalue']))
-            print ratings_data
     # use numpy to calculate the regression, linear was the most appropriate, though this is obviously ridiclous, especially with only 20 data points
     degree = 1
     coefficients = numpy.polyfit(dates, ratings_data, degree)
     # calculate projected rating in 3 years
     projected_rating = coefficients[0]*proj_date + coefficients[1]
-    print projected_rating
+    print "projected rating", projected_rating
 
     # assign score based on projected rating
     if projected_rating > 5.0:

@@ -20,8 +20,9 @@ def get_facebook(business_name,location):
 	
 	# get the facebook alias via a google search
 	alias = grab_facebook_alias(business_name,location)
+	print "facebook alias used", alias
 	if not alias:
-		print "not found"
+		print "not found on facebook"
 		send_alerts.append(alerts[0])
 		return {
 				'x': "Facebook %.2f"% 0.3,
@@ -39,15 +40,15 @@ def get_facebook(business_name,location):
 		r = requests.get(url,params=params)
 		response = json.loads(r.text)
 	except:
-		print "not found"
+		print "not found on facebook"
 		send_alerts.append(alerts[0])
 		return {
 				'x': "Facebook %.2f"% 0.3,
 				'y': 0.3,
 				'z': send_alerts
 			}
-	if 'name' not in response or response['location']['city'].lower()!=location.lower().split()[0].replace(',',''):
-		print "not found"
+	if 'name' not in response or response['location']['city'].lower()!=location.lower().split(',')[0]:
+		print "not found on facebook"
 		send_alerts.append(alerts[0])
 		return {
 				'x': "Facebook %.2f"% 0.3,
@@ -71,14 +72,13 @@ def get_facebook(business_name,location):
 	# calculate average of different scores
 	score_total=0
 	for i, score in enumerate(scores):
-		print score
 		score_total += score
 		if score < 0.7:
 			send_alerts.append(alerts[i+1])
 	final_score = score_total * 0.25
 	if len(send_alerts) == 1:
 		send_alerts.append(alerts[5])
-	print final_score, send_alerts
+	print "facebook finals",final_score, send_alerts
 	if final_score > 1.0:
 		final_score = 1.0
 	return {
@@ -180,12 +180,11 @@ def posting_habits(response):
 
 	# adjust score to be higher for high sentiment and frequent posts
 	score += (31-ave_spacing)/(14.0*ave_spacing)
-	print (31-ave_spacing)/(14.0*ave_spacing)
+	print "spacing score change",(31-ave_spacing)/(14.0*ave_spacing)
 	score += ave_sent / 5.0
-	print ave_sent / 5.0
+	print "sent score change",ave_sent / 5.0
 
 	sent_report = str(int(math.floor(ave_sent * 100)))+"%"
-	print sent_report
 	if ave_sent>=0:
 		mood = "positive"
 	else:
