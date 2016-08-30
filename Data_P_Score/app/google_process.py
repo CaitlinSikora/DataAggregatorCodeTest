@@ -8,7 +8,7 @@ search_engine_id = app.config['GOOGLE_KEYS']['search_engine_id']
 apis = app.config['GOOGLE_KEYS']['apis']
 
 alerts = ["This business could not be found on Google.",
-        "This business owner does not have a positive reputation in this industry."]
+        "This business owner does not have a long-standing, positive reputation in this industry."]
 
 def google_search(key_term, api, search_engine_id):
     search_term = key_term
@@ -59,7 +59,7 @@ def google_score(business_name,owner,business_type,location):
 
     # calculate scores
     try: 
-        own_score = owner_score(owner,business_type)
+        own_score = owner_score(owner,business_type,business_name)
         proj_score = projection_score(business_name,location)
         scores = [own_score, proj_score[0]]
     except:
@@ -83,6 +83,8 @@ def google_score(business_name,owner,business_type,location):
         if score < 0.7:
             send_alerts.append(alerts[i+1])
     final_score = score_total * 0.5
+    if final_score > 1.0:
+        final_score = 1.0
     if len(send_alerts) == 1:
         send_alerts.append(alerts[3])
     print final_score, send_alerts
@@ -92,9 +94,9 @@ def google_score(business_name,owner,business_type,location):
                 'z': send_alerts
             }
 
-def owner_score(owner, business_type):
+def owner_score(owner, business_type, business_name):
     score = 0.5
-    search_term = owner+' '+business_type
+    search_term = owner+' '+business_type+' '+business_name
     results = try_keys(search_term,apis)
 
     # get total number of results and raise score for more results

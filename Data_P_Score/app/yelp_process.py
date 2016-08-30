@@ -89,6 +89,8 @@ def search_yelp(business_name,location):
 	if len(send_alerts) == 1:
 		send_alerts.append(alerts[5])
 	print final_score, send_alerts
+	if final_score > 1.0:
+		final_score = 1.0
 	return {
 				'x': "Yelp %.2f"% final_score,
 				'y': final_score,
